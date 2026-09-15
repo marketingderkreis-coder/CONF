@@ -10,7 +10,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Zonder credentials start de applicatie bewust in een visueel gevulde demomodus, zodat alle schermen beoordeeld kunnen worden. Mutaties worden dan niet gefingeerd of lokaal opgeslagen. Configureer Supabase om persistente data en login te activeren.
+Zonder credentials toont de applicatie een melding dat gegevens niet kunnen worden geladen. Configureer Supabase om data te bekijken en mutaties uit te voeren.
 
 ## Supabase instellen
 
@@ -37,7 +37,7 @@ De `SUPABASE_SERVICE_ROLE_KEY` is uitsluitend bedoeld voor een server-side admin
 
 - `app/` — routes voor dashboard, Mijn Werk, kalender, tickets, Weekstart, rapportage, archief en beheer.
 - `components/` — navigatie en herbruikbare tabellen/KPI/statuscomponenten.
-- `lib/` — Supabase-client, presentatiehelpers en uitsluitend visuele fallbackdata.
+- `lib/` — Supabase-clients, dataqueries en presentatiehelpers.
 - `supabase/migrations/` — volledig relationeel schema, RLS, Storage en workflowregels.
 - `supabase/seed.sql` — rollen, rechten, profielenmerken, kanalen, typen, instellingen en voorbeeldtemplates.
 
