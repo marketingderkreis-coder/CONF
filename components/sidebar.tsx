@@ -1,0 +1,41 @@
+'use client';
+import Link from 'next/link'; import {usePathname} from 'next/navigation';
+import {LayoutDashboard,BriefcaseBusiness,CalendarDays,TicketCheck,ListTodo,Presentation,ChartNoAxesCombined,Archive,Users,Tags,RadioTower,Library,Workflow,ShieldCheck,Settings,LucideIcon} from 'lucide-react'; import {cn} from '@/lib/utils';
+const main=[['Dashboard','/',LayoutDashboard],['Mijn werk','/mijn-werk',BriefcaseBusiness],['Marketingkalender','/kalender',CalendarDays],['Marketingitems','/marketingitems',TicketCheck],['Taken','/taken',ListTodo],['Weekstart','/weekstart',Presentation],['Rapportages','/rapportages',ChartNoAxesCombined],['Archief','/archief',Archive]] as const;
+const admin=[['Team','/admin/team',Users],['Concepten & merken','/admin/concepten',Tags],['Kanalen','/admin/kanalen',RadioTower],['Takenbibliotheek','/admin/takenbibliotheek',Library],['Templates','/admin/templates',Workflow],['Gebruikers & rollen','/admin/gebruikers',ShieldCheck],['Instellingen','/admin/instellingen',Settings]] as const;
+type NavItem = readonly [string, string, LucideIcon];
+
+export function Sidebar() {
+  const path = usePathname();
+  const links = (rows: readonly NavItem[]) =>
+    rows.map(([label, href, Icon]) => (
+      <Link
+        key={href}
+        href={href}
+        className={cn(
+          'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium',
+          path === href ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-100 hover:text-ink'
+        )}
+      >
+        <Icon size={18} />
+        {label}
+      </Link>
+    ));
+  return (
+    <aside className="fixed inset-y-0 left-0 z-30 hidden w-[248px] border-r bg-white p-4 lg:block">
+      <div className="mb-7 flex items-center gap-3 px-2 pt-2">
+        <div className="grid size-9 place-items-center rounded-lg bg-brand-600 font-bold text-white">DK</div>
+        <div>
+          <b className="text-sm">DER KREIS</b>
+          <p className="text-xs text-slate-500">Marketing Hub</p>
+        </div>
+      </div>
+      <nav className="space-y-1">
+        {links(main)}
+        <p className="px-3 pb-1 pt-6 text-[10px] font-bold uppercase tracking-[.15em] text-slate-400">Beheer</p>
+        {links(admin)}
+      </nav>
+    </aside>
+  );
+}
+

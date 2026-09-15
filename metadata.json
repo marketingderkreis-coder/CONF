@@ -1,0 +1,6 @@
+{
+  "name": "DER KREIS Marketing Hub",
+  "description": "Marketing coordination, planning, and task management hub for DER KREIS",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
